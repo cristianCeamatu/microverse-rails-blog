@@ -1,6 +1,5 @@
 class AuthorSessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     if login(params[:email], params[:password])
