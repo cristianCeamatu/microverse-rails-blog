@@ -1,16 +1,31 @@
 <h1><%= @article.title %></h1>
-<p>Tags:
-  <% @article.tags.each do |tag| %>
-      <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
-</p>
+
+<% if @article.tags.size.positive? %>
+  <p>Tags:
+    <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
+<% end %>
+
+<article class="border my-2">
   <% if @article.image.exists? %>
-      <%= image_tag @article.image.url %><br/>
+    <div class="article-image text-center">
+      <%= image_tag @article.image.url, class: 'mw-100' %><br/>
+    </div>
   <% end %>
-<p><%= @article.body %></p>
+  <p class="my-3 text-white p-2"><%= @article.body %></p>
+</article>
+
 <%= render partial: 'comments/form' %>
-<%= link_to "<< Back to Articles List", articles_path %>
-<%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
-<%= link_to "Edit", edit_article_path(@article) %>
+
+<div class="article-links text-warning py-3">
+  <%= link_to "<< Back to Articles List", articles_path, class: 'bg-secondary text-white p-2' %>
+  <% if logged_in? %>
+    <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: 'bg-secondary text-white p-2' %>
+    <%= link_to "Edit", edit_article_path(@article), class: 'bg-secondary text-white p-2' %>
+  <% end %>
+</div>
+
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>

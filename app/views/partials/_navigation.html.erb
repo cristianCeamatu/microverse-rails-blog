@@ -1,0 +1,19 @@
+<nav class="nav pb-5 d-flex align-items-center justify-content-between">
+  <ul class="nav-left d-flex">
+    <li class="mr-3 text-capitalize">Welcome <b class="text-white"><%= logged_in? ? current_user.username : 'Guest' %></b></li>
+    <li class="ml-2"><%= link_to 'Blog', articles_path %></li>
+    <li class="ml-2"><%= link_to 'Tags', tags_path %></li>
+  </ul>
+
+  <ul class="nav-right d-flex">
+  <% if logged_in? %>
+    <li class="ml-2"><%= link_to 'New article', new_article_path %></li>
+    <li class="ml-2"><%= link_to 'Create author', new_author_path %></li>
+    <li class="ml-2"><%= link_to 'Authors', authors_path %></li>
+    <li class="ml-2"><%= link_to 'My profile', author_path(current_user) %></li>
+    <li class="ml-2"><%= link_to 'Logout', logout_path, class: 'text-danger' %></li>
+  <% else %>
+    <li class="ml-2"><%= link_to 'Login', login_path %></li>
+  <% end %>
+  </ul>
+</nav>
