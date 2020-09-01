@@ -5,4 +5,6 @@
     <p class="article-body"><%= article.body %></p>
   </div>
 <% end %>
-<%= link_to 'Create a New Article ', new_article_path, class: 'new_article' %>
+<% if logged_in? %>
+  <%= link_to 'Create a New Article ', new_article_path, class: 'new_article' %>
+<% end %>
