@@ -1,6 +1,6 @@
 <h1>Articles Tagged with `<%= @tag.name %>`
 <% if logged_in? %>
-  <%= link_to ' Delete', tag_path(@tag), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to ' Delete tag', tag_path(@tag), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger font-weight-bold ml-2' %>
 <% end %>
 </h1>
 
