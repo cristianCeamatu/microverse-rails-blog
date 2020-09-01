@@ -2,9 +2,9 @@
 	"name": "template_rails_styleline_rubocop",
 	"private": true,
 	"scripts": {
-		"stylelint": "npx stylelint \"**/*.{css,scss}\"",
+		"stylelint": "npx stylelint \"**/*.scss\"",
 		"rubocop": "rubocop",
-		"test": "npx stylelint \"**/*.scss\" && rubocop"
+		"test": "npm run stylelint && rubocop"
 	},
 	"dependencies": {
 		"@rails/actioncable": "^6.0.0",
